@@ -4,6 +4,7 @@
 
 #pick up logs from all docker containers
 
+{{range $key, $value := .}}
 
 <source>
   type tail
@@ -24,15 +25,7 @@
     name {{ $logs }}
     env {{LOG_ENV}}
 </match>
-
-
-#<match docker.filtered.**>
-#  type exclude_filter
-#  key stream
-#  value stdout
-#  regexp false # default false, string comparison
-#  add_tag_prefix stderr
-#</match>
+{{end}}
 
 <match docker.filtered.**>
     type elasticsearch
