@@ -21,8 +21,8 @@
     type record_modifier
     tag docker.filtered.{{printf "%.*s" 12 $value.ID}}
     image {{ $value.Image }}
-    host ${hostname}
-    name {{ $logs }}
+    host {{$value.Host}}
+    name {{ $value.Name }}
     env {{LOG_ENV}}
 </match>
 {{end}}
