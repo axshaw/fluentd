@@ -1,7 +1,9 @@
 ## File input
 ## read docker logs with tag=docker.container
 
-{{range $key, $value := .}}{{ $logs := $value.Env.LOG }}{{ if $logs }}
+
+#pick up logs from all docker containers
+#{{range $key, $value := .}}{{ $logs := $value.Env.LOG }}{{ if $logs }}
 
 <source>
   type tail
@@ -22,17 +24,17 @@
     name {{ $logs }}
     env {{LOG_ENV}}
 </match>
-{{end}}{{ end }}
+#{{end}}{{ end }}
+
+#<match docker.filtered.**>
+#  type exclude_filter
+#  key stream
+#  value stdout
+#  regexp false # default false, string comparison
+#  add_tag_prefix stderr
+#</match>
 
 <match docker.filtered.**>
-  type exclude_filter
-  key stream
-  value stdout
-  regexp false # default false, string comparison
-  add_tag_prefix stderr
-</match>
-
-<match stderr.docker.filtered.**>
     type elasticsearch
     host {{ .Env.ES_HOST }}
     port {{ .Env.ES_PORT }}

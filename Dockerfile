@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Michal Raczka me@michaloo.net
+MAINTAINER Alex Shaw alex@ctmlabs.io
 
 # install curl and fluentd deps
 RUN apt-get update \
@@ -22,7 +22,7 @@ ADD ./config /app/config
 
 WORKDIR /app
 
-ENV ES_HOST localhost
+ENV ES_HOST log.aws.simpl.es
 ENV ES_PORT 9200
 ENV LOG_ENV production
 ENV DOCKER_HOST unix:///tmp/docker.sock
