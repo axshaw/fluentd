@@ -23,7 +23,7 @@ ADD ./config /app/config
 WORKDIR /app
 
 ENV ES_HOST log.aws.simpl.es
-ENV ES_PORT 9200
+ENV ES_PORT 5141
 ENV LOG_ENV production
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
