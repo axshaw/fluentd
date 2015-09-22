@@ -22,7 +22,7 @@
     tag docker.filtered.{{printf "%.*s" 12 $value.ID}}
     image {{ $value.Image }}
     host {{$value.Host}}
-    name {{ $value.Name }}
+    name {{ $value.Node.Name }}
     env {{LOG_ENV}}
 </match>
 {{end}}
