@@ -3,7 +3,7 @@
 
 
 #pick up logs from all docker containers
-#{{range $key, $value := .}}{{ $logs := $value.Env.LOG }}{{ if $logs }}
+
 
 <source>
   type tail
@@ -24,7 +24,7 @@
     name {{ $logs }}
     env {{LOG_ENV}}
 </match>
-#{{end}}{{ end }}
+
 
 #<match docker.filtered.**>
 #  type exclude_filter
